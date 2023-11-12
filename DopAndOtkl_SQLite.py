@@ -1,5 +1,5 @@
-import sqlite3
 import os
+import sqlite3
 import tkinter as tk
 from tkinter import Entry, Label, StringVar, OptionMenu, font
 
