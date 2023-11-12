@@ -4,3 +4,4 @@ build/
 dist/
 myenv/
 myenv379/
+.gitignore
