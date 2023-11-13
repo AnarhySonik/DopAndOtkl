@@ -44,10 +44,15 @@ def update_letters(letter_menu, *args):
         letter_options = ["H", "Js", "K", "F"]
     elif selected_system == "система вала":
         letter_options = ["g", "h", "js", "k", "n", "r", "f", "s", "u", "d", "b"]
-    letter_var.set(letter_options[0])
-    letter_menu['menu'].delete(0, 'end')
-    for option in letter_options:
-        letter_menu['menu'].add_command(label=option, command=tk._setit(letter_var, option))
+    selected_letter = letter_var.get()
+
+    # Если выбранная буква не соответствует системе вала, установим первую букву из списка
+    if selected_system == "система вала" and selected_letter not in letter_options:
+        letter_var.set(letter_options[0])
+    else:
+        letter_menu['menu'].delete(0, 'end')
+        for option in letter_options:
+            letter_menu['menu'].add_command(label=option, command=lambda value=option: letter_var.set(value))
 
 
 def combination_exists(combination, system):
@@ -186,7 +191,7 @@ entry_size = Entry(frame, textvariable=entry_size_var, font=default_font)
 entry_size.grid(row=0, column=1)
 
 Label(frame, text="Выберите литеру основного отклонения:", font=default_font).grid(row=1, column=0)
-letter_options = ["H", "Js", "K", "F", "Js"]
+letter_options = ["H", "Js", "K", "F", "Js", "g", "h", "js", "k", "n", "r", "f", "s", "u", "d", "b"]
 letter_var = StringVar()
 letter_var.set(letter_options[0])
 
